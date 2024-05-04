@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     id("org.jetbrains.kotlin.multiplatform") version "1.9.23"
+    id("maven-publish")
 }
 
 kotlin {
@@ -19,3 +20,6 @@ kotlin {
         }
     }
 }
+
+group = "androidx.annotation"
+version = "1.7.1"
