@@ -28,5 +28,6 @@ package androidx.annotation
     AnnotationTarget.VALUE_PARAMETER,
     AnnotationTarget.FIELD,
     AnnotationTarget.LOCAL_VARIABLE,
+    AnnotationTarget.TYPE,
 )
 public annotation class ArrayRes
