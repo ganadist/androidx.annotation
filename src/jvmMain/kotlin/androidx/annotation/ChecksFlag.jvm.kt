@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 The Android Open Source Project
+ * Copyright 2025 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,20 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package androidx.annotation
 
 /**
- * Denotes that an integer parameter, field or method return value is expected to be an attribute
- * reference (e.g. `android.R.attr.action`).
+ * Denotes that the annotated method or field is equivalent to checking that the specified aconfig
+ * flag is enabled.
  */
 @MustBeDocumented
-@kotlin.annotation.Retention(AnnotationRetention.BINARY)
-@Target(
-    AnnotationTarget.FUNCTION,
-    AnnotationTarget.PROPERTY_GETTER,
-    AnnotationTarget.PROPERTY_SETTER,
-    AnnotationTarget.VALUE_PARAMETER,
-    AnnotationTarget.FIELD,
-    AnnotationTarget.LOCAL_VARIABLE,
+@Retention(AnnotationRetention.BINARY)
+@Target(AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.FIELD)
+@RestrictTo(RestrictTo.Scope.LIBRARY_GROUP_PREFIX) // Flags are only supported internally for now.
+public annotation class ChecksFlag(
+    /**
+     * The string value for the aconfig flag checked by the annotated API, for example
+     * `"android.os.flags.my_feature"`.
+     */
+    val value: String
 )
-public annotation class AttrRes

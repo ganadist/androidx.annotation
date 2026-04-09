@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 The Android Open Source Project
+ * Copyright 2025 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,20 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package androidx.annotation
 
 /**
- * Denotes that an integer parameter, field or method return value is expected to be an attribute
- * reference (e.g. `android.R.attr.action`).
+ * Indicates an API is part of a feature that is guarded by an aconfig flag, and only available if
+ * the flag is enabled.
+ *
+ * Unless the API has been finalized and has become part of the SDK, callers of the annotated API
+ * must check that the flag is enabled before making any assumptions about the existence of the API.
  */
 @MustBeDocumented
-@kotlin.annotation.Retention(AnnotationRetention.BINARY)
+@Retention(AnnotationRetention.BINARY)
 @Target(
+    AnnotationTarget.ANNOTATION_CLASS,
+    AnnotationTarget.CLASS,
     AnnotationTarget.FUNCTION,
     AnnotationTarget.PROPERTY_GETTER,
     AnnotationTarget.PROPERTY_SETTER,
-    AnnotationTarget.VALUE_PARAMETER,
+    AnnotationTarget.CONSTRUCTOR,
     AnnotationTarget.FIELD,
-    AnnotationTarget.LOCAL_VARIABLE,
+    AnnotationTarget.FILE,
 )
-public annotation class AttrRes
+public annotation class RequiresFlag(
+    /**
+     * The string value for the aconfig flag used to guard the feature this API is part of, for
+     * example `"android.os.flags.my_feature"`.
+     */
+    val value: String
+)
