@@ -1,0 +1,11 @@
+[versions]
+
+# https://android.googlesource.com/platform/frameworks/support/+/refs/heads/androidx-annotation-release/buildSrc/public/src/main/kotlin/androidx/build/AndroidXConfiguration.kt#44
+kotlin = "2.1.20"
+
+[libraries]
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+
+
+[plugins]
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }

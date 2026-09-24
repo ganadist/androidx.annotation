@@ -2,7 +2,7 @@ import org.gradle.api.tasks.bundling.Jar
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    id("org.jetbrains.kotlin.multiplatform") version "2.1.20"
+    alias(libs.plugins.kotlin.multiplatform)
     id("maven-publish")
 }
 
@@ -16,7 +16,7 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                api("org.jetbrains.kotlin:kotlin-stdlib:2.1.20")
+                api(libs.kotlin.stdlib)
             }
         }
     }
@@ -34,4 +34,4 @@ tasks.named<Jar>("jvmJar") {
 }
 
 group = "androidx.annotation"
-version = "1.10.0"
+version = "1.11.0"
